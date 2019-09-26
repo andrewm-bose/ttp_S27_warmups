@@ -1,0 +1,15 @@
+#GIVEN A LIST....
+lst = [1,7,2,6,3,5,4,10,9,8,7,6,5,4,3,2,22]
+
+# (Google any you don't know how to do)
+# print the 1st element list
+# print the 5th element of the list
+# print the first 10 elements
+# print the 5th to 10th element
+# print the last element
+# print the 2nd to last element
+# print the list in reverse order
+# print the every other element in the list
+# print the every 3rd element in the list
+# print the every other element of the 1st 12 elements of the list
+# (This one's tricky) print the every other element of the 1st 12 elements of the list in reverse order
