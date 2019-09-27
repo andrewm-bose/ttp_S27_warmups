@@ -1,0 +1,87 @@
+ANSWERS
+
+--Return a list of all movie categories and the number of movies that are in each, in order of largest category to smallest.
+SELECT c.name, COUNT(f.film_id) as total
+FROM film as f
+JOIN film_category AS fc  ON f.film_id=fc.film_id
+JOIN category AS c ON fc.category_id=c.category_id
+GROUP BY c.category_id
+ORDER BY total DESC ;
+
+
+--Return all films with shorter than average length.
+SELECT *
+FROM payment
+WHERE amount > (SELECT AVG(amount) FROM payment);
+
+
+-- Returns the title and ID of the film with the lowest replacement cost
+SELECT title, film_id
+FROM film
+WHERE replacement_cost = (SELECT MIN(replacement_cost) FROM film);
+
+-- Returns tile and ID of the film with the highest rental_rate
+SELECT title, film_id
+FROM film
+WHERE rental_rate = (SELECT MAX(rental_rate) FROM film);
+
+-- Show the payment_id's of all transactions after or on May 1st 2007
+SELECT payment_date 
+From payment
+WHERE payment_date > '2007-05-01'
+ORDER BY payment_date DESC;
+
+-- Shows all payment ID's and payment date's with a transaction amount less than $3.
+SELECT payment_id, payment_date
+From payment
+WHERE amount < 3;
+
+-- Gets the emails of all customers that shop at store 1 that are inactive.
+SELECT customer_id, email, active
+From customer
+WHERE store_id = 1 AND active = 0
+ORDER BY last_update;
+
+-- Creates a list of customer's and there total spendings out of customers who are currently
+-- active and shop at store #1
+SELECT customer_id, SUM(amount)
+FROM payment 
+WHERE customer_id IN (SELECT customer_id
+						From customer
+						WHERE store_id = 1 AND active = 0
+						ORDER BY last_update)
+GROUP BY customer_id;
+
+--Return a list of all movie categories and the number of movies that are in each, in order of largest category to smallest.
+SELECT c.category_id, COUNT(f.film_id) as total
+FROM film as f
+    JOIN film_category as c
+    ON f.film_id=c.film_id
+GROUP BY c.category_id
+ORDER BY total DESC ;
+
+
+
+# Answers:
+# print the 1st element list
+print(lst[0])
+# print the 5th element of the list
+print(lst[4])
+# print the first 10 elements
+print(lst[:10])
+# print the 5th to 10th element
+print(lst[5:11])
+# print the last element
+print(lst[-1])
+# print the 2nd to last element
+print(lst[-2])
+# print the list in reverse order
+print(lst[::-1])
+# print the every other element in the list
+print(lst[::2])
+# print the every 3rd element in the list
+print(lst[::3])
+# print the every other element of the 1st 12 elements of the list
+print(lst[:12:2])
+# (This one's tricky) print the every other element of the 1st 12 elements of the list in reverse order
+print(lst[:12:2][::-1])
